@@ -9,4 +9,6 @@ TEST(SimilarityCheckerTC, checkCharacterLines00) {
 TEST(SimilarityCheckerTC, checkCharacterLines01) {
 	int score = SimilarityChecker().checkCharacterLines("AAA", "BBBB");
 	EXPECT_EQ(40, score);
+	score = SimilarityChecker().checkCharacterLines("AAABB", "BBBB");
+	EXPECT_EQ(45, score);
 }
