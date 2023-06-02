@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="gtest_00.cpp">
+      <Filter>day2</Filter>
+    </ClCompile>
+    <ClCompile Include="gtest_01.cpp">
+      <Filter>day2</Filter>
+    </ClCompile>
+    <ClCompile Include="gtest_02.cpp">
+      <Filter>day2</Filter>
+    </ClCompile>
+    <ClCompile Include="gtest_05.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="day2">
+      <UniqueIdentifier>{b34df6df-f10c-4ae6-ae9e-c41331f418cd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
