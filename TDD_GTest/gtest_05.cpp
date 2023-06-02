@@ -28,3 +28,8 @@ TEST(SimilarityCheckerTC, checkAlphabetMatching00) {
 TEST(SimilarityCheckerTC, checkAlphabetMatching01) {
 	EXPECT_THROW(SimilarityChecker().checkAlphabetMatching("aaa", "AAA"), std::invalid_argument);
 }
+
+TEST(SimilarityCheckerTC, checkAlphabetMatching02) {
+	int score = SimilarityChecker().checkAlphabetMatching("BBAA", "ABC");
+	EXPECT_EQ(1, score);
+}

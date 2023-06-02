@@ -1,6 +1,9 @@
 #include <string>
 #include <vector>
 #include <stdexcept>
+#include <bitset>
+
+
 
 class SimilarityChecker
 {
@@ -38,8 +41,12 @@ public:
 		{
 			return 40;
 		}
-		
-		return 0;
+
+		auto bs_total = std::bitset<32>(s1b | s2b);
+		double totalCount = (double)bs_total.count();
+		auto bs_same = std::bitset<32>(s1b & s2b);
+		double sameCount = (double)bs_same.count();
+		return (int)(sameCount / totalCount * 40);
 	}
 
 	int checkAlphabetMatching(const std::string& str1, const std::string& str2)
