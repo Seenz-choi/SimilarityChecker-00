@@ -17,3 +17,8 @@ TEST(SimilarityCheckerTC, checkCharacterLines02) {
 	int score = SimilarityChecker().checkCharacterLines("AA", "BBBB");
 	EXPECT_EQ(0, score);
 }
+
+TEST(SimilarityCheckerTC, checkAlphabetMatching00) {
+	int score = SimilarityChecker().checkAlphabetMatching("AAA", "AAA");
+	EXPECT_EQ(0, score);
+}

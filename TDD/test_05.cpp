@@ -12,6 +12,13 @@ public:
 		if (isZeroScore(a, b)) return 0;
 		return getCharactorLinesScore(a, b);
 	}
+
+	int checkAlphabetMatching(const std::string& str1, const std::string& str2)
+	{
+		if (str1 == str2) return 40;
+		
+		return 0;
+	}
 private:
 	bool needToSuffle(int a, int b)
 	{
