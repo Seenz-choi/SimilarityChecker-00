@@ -26,21 +26,19 @@ public:
 
 	int getAlphabetMatchingScore(const std::string& str1, const std::string& str2)
 	{
-		std::vector<int> str_map1 = { 0, };
-		str_map1.resize(32);
+		uint32_t s1b = 0;
 		for (char ch : str1) {
-			str_map1[ch - 'A'] = 1;
+			s1b |= 1 << (ch - 'A');
 		}
-		std::vector<int> str_map2 = { 0, };
-		str_map2.resize(32);
+		uint32_t s2b = 0;
 		for (char ch : str2) {
-			str_map2[ch - 'A'] = 1;
+			s2b |= 1 << (ch - 'A');
 		}
-		if (std::equal(str_map1.begin(),
-		               str_map1.end(), str_map2.begin()))
+		if (s1b == s2b) 
 		{
 			return 40;
 		}
+		
 		return 0;
 	}
 
