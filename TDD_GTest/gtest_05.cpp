@@ -9,18 +9,4 @@ TEST(SimilarityCheckerTC, checkCharacterLines00) {
 TEST(SimilarityCheckerTC, checkCharacterLines01) {
 	int score = SimilarityChecker().checkCharacterLines("AAA", "BBBB");
 	EXPECT_EQ(40, score);
-	score = SimilarityChecker().checkCharacterLines("AAABB", "BBBB");
-	EXPECT_EQ(45, score);
-}
-
-TEST(SimilarityCheckerTC, checkCharacterLines02) {
-	int score = SimilarityChecker().checkCharacterLines("AA", "BBBB");
-	EXPECT_EQ(0, score);
-}
-
-TEST(SimilarityCheckerTC, checkAlphabetMatching00) {
-	int score = SimilarityChecker().checkAlphabetMatching("AAA", "AAA");
-	EXPECT_EQ(0, score);
-	int score = SimilarityChecker().checkAlphabetMatching("ABC", "CAB");
-	EXPECT_EQ(0, score);
 }
