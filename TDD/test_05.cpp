@@ -17,9 +17,17 @@ public:
 		return getCharactorLinesScore(a, b);
 	}
 
+	int checkAlphabetMatching(const std::string& str1, const std::string& str2)
+	{
+		assertInvalidString(str1, str2);
+		if (str1 == str2) return 40;
+
+		return getAlphabetMatchingScore(str1, str2);
+	}
+private:
 	void assertInvalidString(const std::string& str1, const std::string& str2)
 	{
-		for(char ch : str1 + str2)
+		for (char ch : str1 + str2)
 		{
 			if (ch < 'A' || ch > 'Z') {
 				throw std::invalid_argument("Allow UPPER case only ");
@@ -29,34 +37,17 @@ public:
 
 	int getAlphabetMatchingScore(const std::string& str1, const std::string& str2)
 	{
-		uint32_t s1b = 0;
-		for (char ch : str1) {
-			s1b |= 1 << (ch - 'A');
-		}
-		uint32_t s2b = 0;
-		for (char ch : str2) {
-			s2b |= 1 << (ch - 'A');
-		}
-		if (s1b == s2b) 
-		{
-			return 40;
-		}
+		uint32_t s1b = 0, s2b = 0;
+		for (char ch : str1) s1b |= 1 << (ch - 'A');
+		for (char ch : str2) s2b |= 1 << (ch - 'A');
+		if (s1b == s2b) return 40;
 
-		auto bs_total = std::bitset<32>(s1b | s2b);
-		double totalCount = (double)bs_total.count();
-		auto bs_same = std::bitset<32>(s1b & s2b);
-		double sameCount = (double)bs_same.count();
+		double totalCount = std::bitset<32>(s1b | s2b).count();
+		double sameCount = std::bitset<32>(s1b & s2b).count();
+
 		return (int)(sameCount / totalCount * 40);
 	}
 
-	int checkAlphabetMatching(const std::string& str1, const std::string& str2)
-	{
-		assertInvalidString(str1, str2);
-		if (str1 == str2) return 40;
-
-		return getAlphabetMatchingScore(str1, str2);
-	}
-private:
 	bool needToSuffle(int a, int b)
 	{
 		return a < b;

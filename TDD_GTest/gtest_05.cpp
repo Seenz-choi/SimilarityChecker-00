@@ -31,5 +31,7 @@ TEST(SimilarityCheckerTC, checkAlphabetMatching01) {
 
 TEST(SimilarityCheckerTC, checkAlphabetMatching02) {
 	int score = SimilarityChecker().checkAlphabetMatching("BBAA", "ABC");
-	EXPECT_EQ(1, score);
+	EXPECT_EQ(26, score);
+	score = SimilarityChecker().checkAlphabetMatching("DDEFG", "ABC");
+	EXPECT_EQ(0, score);
 }
