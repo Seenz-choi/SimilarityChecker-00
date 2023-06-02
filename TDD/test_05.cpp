@@ -40,7 +40,6 @@ private:
 		uint32_t s1b = 0, s2b = 0;
 		for (char ch : str1) s1b |= 1 << (ch - 'A');
 		for (char ch : str2) s2b |= 1 << (ch - 'A');
-		if (s1b == s2b) return 40;
 
 		double totalCount = std::bitset<32>(s1b | s2b).count();
 		double sameCount = std::bitset<32>(s1b & s2b).count();
