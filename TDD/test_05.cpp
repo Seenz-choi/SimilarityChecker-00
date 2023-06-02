@@ -16,6 +16,18 @@ public:
 	int checkAlphabetMatching(const std::string& str1, const std::string& str2)
 	{
 		if (str1 == str2) return 40;
+		std::vector<int> str_map1 = { 0, };
+		str_map1.resize(32);
+		for (char ch : str1) {
+			str_map1[ch - 'A'] = 1;
+		}
+		std::vector<int> str_map2 = { 0, };
+		str_map2.resize(32);
+		for (char ch : str2) {
+			str_map2[ch - 'A'] = 1;
+		}
+		if (std::equal(str_map1.begin(),
+			str_map1.end(), str_map2.begin())) return 40;
 		
 		return 0;
 	}
