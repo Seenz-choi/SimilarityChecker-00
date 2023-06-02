@@ -8,14 +8,25 @@ public:
 	{
 		int a = str1.length();
 		int b = str2.length();
-		if (a < b) std::swap(a, b);
+		if (needToSuffle(a, b)) std::swap(a, b);
+		if (isZeroScore(a, b)) return 0;
+		return getCharactorLinesScore(a, b);
+	}
+private:
+	bool needToSuffle(int a, int b)
+	{
+		return a < b;
+	}
 
-		int gap = a - b;
-		if (gap == 0) return 60;
-		if (a >= b * 2) return 0;
+	bool isZeroScore(int a, int b)
+	{
+		return a >= b * 2;
+	}
 
-		double result = (1.f - (double)gap / b) * 60.f;
-		return (int)result;
+	double getCharactorLinesScore(int a, int b)
+	{
+		double result = (1.f - (double)(a - b) / b) * 60.f;
+		return static_cast<int>(result);
 	}
 };
 
