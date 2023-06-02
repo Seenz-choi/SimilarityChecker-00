@@ -24,3 +24,7 @@ TEST(SimilarityCheckerTC, checkAlphabetMatching00) {
 	score = SimilarityChecker().checkAlphabetMatching("ABC", "CAB");
 	EXPECT_EQ(40, score);
 }
+
+TEST(SimilarityCheckerTC, checkAlphabetMatching01) {
+	EXPECT_THROW(SimilarityChecker().checkAlphabetMatching("aaa", "AAA"), std::invalid_argument);
+}

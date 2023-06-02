@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include <stdexcept>
 
 class SimilarityChecker
 {
@@ -15,6 +16,12 @@ public:
 
 	int checkAlphabetMatching(const std::string& str1, const std::string& str2)
 	{
+		for(char ch : str1 + str2)
+		{
+			if (ch < 'A' || ch > 'Z') {
+				throw std::invalid_argument("Allow UPPER case only ");
+			}
+		}
 		if (str1 == str2) return 40;
 		std::vector<int> str_map1 = { 0, };
 		str_map1.resize(32);
