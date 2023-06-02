@@ -1,37 +1,36 @@
 #include "pch.h"
 #include "../TDD/test_05.cpp"
 
-TEST(SimilarityCheckerTC, checkCharacterLines00) {
-	int score = SimilarityChecker().checkCharacterLines("AAA", "BBB");
-	EXPECT_EQ(60, score);
+class SCFixture : public testing::Test
+{
+public:
+	SimilarityChecker sc;
+};
+
+TEST_F(SCFixture, checkCharacterLines00) {
+	EXPECT_EQ(60, sc.checkCharacterLines("AAA", "BBB"));
 }
 
-TEST(SimilarityCheckerTC, checkCharacterLines01) {
-	int score = SimilarityChecker().checkCharacterLines("AAA", "BBBB");
-	EXPECT_EQ(40, score);
-	score = SimilarityChecker().checkCharacterLines("AAABB", "BBBB");
-	EXPECT_EQ(45, score);
+TEST_F(SCFixture, checkCharacterLines01) {
+	EXPECT_EQ(40, sc.checkCharacterLines("AAA", "BBBB"));
+	EXPECT_EQ(45, sc.checkCharacterLines("AAABB", "BBBB"));
 }
 
-TEST(SimilarityCheckerTC, checkCharacterLines02) {
-	int score = SimilarityChecker().checkCharacterLines("AA", "BBBB");
-	EXPECT_EQ(0, score);
+TEST_F(SCFixture, checkCharacterLines02) {
+	EXPECT_EQ(0, sc.checkCharacterLines("AA", "BBBB"));
 }
 
-TEST(SimilarityCheckerTC, checkAlphabetMatching00) {
-	int score = SimilarityChecker().checkAlphabetMatching("AAA", "AAA");
-	EXPECT_EQ(40, score);
-	score = SimilarityChecker().checkAlphabetMatching("ABC", "CAB");
-	EXPECT_EQ(40, score);
+TEST_F(SCFixture, checkAlphabetMatching00) {
+	EXPECT_EQ(40, sc.checkAlphabetMatching("AAA", "AAA"));
+	EXPECT_EQ(40, sc.checkAlphabetMatching("ABC", "CAB"));
 }
 
-TEST(SimilarityCheckerTC, checkAlphabetMatching01) {
-	EXPECT_THROW(SimilarityChecker().checkAlphabetMatching("aaa", "AAA"), std::invalid_argument);
+TEST_F(SCFixture, checkAlphabetMatching01) {
+	EXPECT_THROW(sc.checkAlphabetMatching("aaa", "AAA"),
+	             std::invalid_argument);
 }
 
-TEST(SimilarityCheckerTC, checkAlphabetMatching02) {
-	int score = SimilarityChecker().checkAlphabetMatching("BBAA", "ABC");
-	EXPECT_EQ(26, score);
-	score = SimilarityChecker().checkAlphabetMatching("DDEFG", "ABC");
-	EXPECT_EQ(0, score);
+TEST_F(SCFixture, checkAlphabetMatching02) {
+	EXPECT_EQ(26, sc.checkAlphabetMatching("BBAA", "ABC"));
+	EXPECT_EQ(0, sc.checkAlphabetMatching("DDEFG", "ABC"));
 }
