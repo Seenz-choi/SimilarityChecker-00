@@ -14,7 +14,7 @@ public:
 		return getCharactorLinesScore(a, b);
 	}
 
-	int checkAlphabetMatching(const std::string& str1, const std::string& str2)
+	void assertInvalidString(const std::string& str1, const std::string& str2)
 	{
 		for(char ch : str1 + str2)
 		{
@@ -22,7 +22,10 @@ public:
 				throw std::invalid_argument("Allow UPPER case only ");
 			}
 		}
-		if (str1 == str2) return 40;
+	}
+
+	int getAlphabetMatchingScore(const std::string& str1, const std::string& str2)
+	{
 		std::vector<int> str_map1 = { 0, };
 		str_map1.resize(32);
 		for (char ch : str1) {
@@ -34,9 +37,19 @@ public:
 			str_map2[ch - 'A'] = 1;
 		}
 		if (std::equal(str_map1.begin(),
-			str_map1.end(), str_map2.begin())) return 40;
-		
+		               str_map1.end(), str_map2.begin()))
+		{
+			return 40;
+		}
 		return 0;
+	}
+
+	int checkAlphabetMatching(const std::string& str1, const std::string& str2)
+	{
+		assertInvalidString(str1, str2);
+		if (str1 == str2) return 40;
+
+		return getAlphabetMatchingScore(str1, str2);
 	}
 private:
 	bool needToSuffle(int a, int b)
