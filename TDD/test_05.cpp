@@ -3,8 +3,6 @@
 #include <stdexcept>
 #include <bitset>
 
-
-
 class SimilarityChecker
 {
 public:
@@ -27,8 +25,7 @@ public:
 private:
 	void assertInvalidString(const std::string& str1, const std::string& str2)
 	{
-		for (char ch : str1 + str2)
-		{
+		for (char ch : str1 + str2) {
 			if (ch < 'A' || ch > 'Z') {
 				throw std::invalid_argument("Allow UPPER case only ");
 			}
