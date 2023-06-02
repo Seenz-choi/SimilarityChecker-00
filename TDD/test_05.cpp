@@ -18,7 +18,7 @@ public:
 	int checkAlphabetMatching(const std::string& str1, const std::string& str2)
 	{
 		assertInvalidString(str1, str2);
-		if (str1 == str2) return 40;
+		if (str1 == str2) return MAX_ALPH_SCORE;
 
 		return getAlphabetMatchingScore(str1, str2);
 	}
@@ -41,7 +41,7 @@ private:
 		double totalCount = std::bitset<32>(s1b | s2b).count();
 		double sameCount = std::bitset<32>(s1b & s2b).count();
 
-		return (int)(sameCount / totalCount * 40);
+		return (int)(sameCount / totalCount * MAX_ALPH_SCORE);
 	}
 
 	bool needToSuffle(int a, int b)
@@ -56,9 +56,13 @@ private:
 
 	double getCharactorLinesScore(int a, int b)
 	{
-		double result = (1.f - (double)(a - b) / b) * 60.f;
+		double result = (1.f - (double)(a - b) / b) * MAX_CHAR_SCORE;
 		return static_cast<int>(result);
 	}
+private:
+	const double MAX_CHAR_SCORE = 60.f;
+	const double MAX_ALPH_SCORE = 40.f;
+
 };
 
 #ifndef GTEST_INCLUDE_GTEST_GTEST_H_
