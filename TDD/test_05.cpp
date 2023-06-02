@@ -13,17 +13,17 @@ public:
 		return getCharactorLinesScore(a, b);
 	}
 private:
-	bool needToSuffle(int a, int b)
+	bool needToSuffle(const int& a, const int& b)
 	{
 		return a < b;
 	}
 
-	bool isZeroScore(int a, int b)
+	bool isZeroScore(const int& a, const int& b)
 	{
 		return a >= b * 2;
 	}
 
-	double getCharactorLinesScore(int a, int b)
+	double getCharactorLinesScore(const int& a, const int& b)
 	{
 		double result = (1.f - (double)(a - b) / b) * 60.f;
 		return static_cast<int>(result);
